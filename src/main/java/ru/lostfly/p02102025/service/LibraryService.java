@@ -1,8 +1,8 @@
-package ru.lostfly.service;
+package ru.lostfly.p02102025.service;
 
-import ru.lostfly.domain.book.Book;
-import ru.lostfly.domain.reader.Reader;
-import ru.lostfly.repository.BookRepository;
+import ru.lostfly.p02102025.domain.book.Book;
+import ru.lostfly.p02102025.domain.reader.Reader;
+import ru.lostfly.p02102025.repository.BookRepository;
 
 public class LibraryService {
     private final BookRepository bookRepository;

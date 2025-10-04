@@ -1,11 +1,11 @@
-package ru.lostfly;
+package ru.lostfly.p02102025;
 
-import ru.lostfly.domain.book.Book;
-import ru.lostfly.domain.reader.Reader;
-import ru.lostfly.repository.BookRepository;
-import ru.lostfly.service.LibraryService;
+import ru.lostfly.p02102025.domain.book.Book;
+import ru.lostfly.p02102025.domain.reader.Reader;
+import ru.lostfly.p02102025.repository.BookRepository;
+import ru.lostfly.p02102025.service.LibraryService;
 
-public class Main {
+public class App1 {
 
     public static void main(String[] args) {
 
@@ -28,7 +28,7 @@ public class Main {
         repository.save(book2);
         repository.save(book3);
 
-// /add_user
+        // /add_user
         Reader alice = new Reader("R001", "Alice");
         Reader bob = new Reader("R002", "Bob");
 
@@ -41,10 +41,10 @@ public class Main {
         System.out.println(library.borrowBook("978-0-13-235088-4", bob));
 
         // Попытка взять уже выданную книгу
-        // /find_book_by_isbn
+        // /borrow_book
         System.out.println(library.borrowBook("978-0-13-468599-1", bob));
 
-
+        // find_book_by_author
         System.out.println("\n=== Поиск книг Robert Martin ===");
         var martinBooks = repository.findByAuthor("Robert Martin");
         for (Book book : martinBooks) {  // for-each цикл

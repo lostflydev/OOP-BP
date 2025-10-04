@@ -1,4 +1,4 @@
-package ru.lostfly.domain.book;
+package ru.lostfly.p02102025.domain.book;
 
 public class Book implements Borrowable{
 

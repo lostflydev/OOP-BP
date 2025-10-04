@@ -1,6 +1,6 @@
-package ru.lostfly.repository;
+package ru.lostfly.p02102025.repository;
 
-import ru.lostfly.domain.book.Book;
+import ru.lostfly.p02102025.domain.book.Book;
 import java.util.ArrayList;
 import java.util.List;
 
