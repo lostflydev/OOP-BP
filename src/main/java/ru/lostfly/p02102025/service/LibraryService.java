@@ -2,49 +2,22 @@ package ru.lostfly.p02102025.service;
 
 import ru.lostfly.p02102025.domain.book.Book;
 import ru.lostfly.p02102025.domain.reader.Reader;
-import ru.lostfly.p02102025.repository.BookRepository;
 
-public class LibraryService {
-    private final BookRepository bookRepository;
-
-    public LibraryService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
-
-    public String borrowBook(String isbn, Reader reader) {
-
-        if (!reader.canBorrowMore()) {
-            return "Читатель уже взял максимальное количество книг";
-        }
-
-        Book book = bookRepository.findByIsbn(isbn);
-        if (book == null) {
-            return "Книга не найдена";
-        }
-
-
-        String result = book.borrow();
-        if (result.equals("Книга успешно взята")) {
-            reader.addBook(book);
-        } else {
-            return result;
-        }
-
-        return "Книга успешно взята";
-    }
-
-    public String returnBook(Book bookArg, Reader reader) {
-        Book book = bookRepository.findByIsbn(bookArg.getIsbn());
-        if (book == null) {
-            bookRepository.save(bookArg);
-        }
-
-        if (!reader.getBorrowedBooks().contains(book)) {
-            return "Читатель не взял эту книгу";
-        }
-
-        book.setAvailable(true);
-        reader.removeBook(book);
-        return "Книга успешно возвращена";
-    }
+public interface LibraryService {
+    
+    /**
+     * Выдать книгу читателю
+     * @param isbn идентификатор книги
+     * @param reader читатель
+     * @return сообщение о результате операции
+     */
+    String borrowBook(String isbn, Reader reader);
+    
+    /**
+     * Вернуть книгу в библиотеку
+     * @param book книга для возврата
+     * @param reader читатель, возвращающий книгу
+     * @return сообщение о результате операции
+     */
+    String returnBook(Book book, Reader reader);
 }

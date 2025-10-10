@@ -1,48 +1,34 @@
 package ru.lostfly.p02102025.repository;
 
 import ru.lostfly.p02102025.domain.book.Book;
-import java.util.ArrayList;
+
 import java.util.List;
 
-public class BookRepository {
-    private final List<Book> books = new ArrayList<>();
-
-    public void save(Book book) {
-        books.add(book);
-    }
-
-    public Book findByIsbn(String isbn) {
-        for (Book book : books) {  // for-each
-            if (book.getIsbn().equals(isbn)) {  // equals для String!
-                return book;
-            }
-        }
-        return null;  // не нашли
-    }
-
-
-    public List<Book> findAvailableBooks() {
-        List<Book> available = new ArrayList<>();
-        for (Book book : books) {
-            if (book.isAvailable()) {  // примитив boolean
-                available.add(book);
-            }
-        }
-        return available;
-    }
-
-    public List<Book> findByAuthor(String author) {
-        List<Book> result = new ArrayList<>();
-        for (Book book : books) {
-            if (book.getAuthor().equalsIgnoreCase(author)) {  // игнорируем регистр
-                result.add(book);
-            }
-        }
-        return result;
-    }
-
-
-    public int getTotalBooks() {
-        return books.size();
-    }
+public interface BookRepository {
+    
+    /**
+     * Сохранить книгу в хранилище
+     */
+    void save(Book book);
+    
+    /**
+     * Найти книгу по ISBN
+     * @return книга или null, если не найдена
+     */
+    Book findByIsbn(String isbn);
+    
+    /**
+     * Получить все доступные книги
+     */
+    List<Book> findAvailableBooks();
+    
+    /**
+     * Найти книги по автору
+     */
+    List<Book> findByAuthor(String author);
+    
+    /**
+     * Получить общее количество книг
+     */
+    int getTotalBooks();
 }
