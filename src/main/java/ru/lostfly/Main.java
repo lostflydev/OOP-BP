@@ -1,6 +1,6 @@
-package ru.lostfly.p02102025;
+package ru.lostfly;
 
-import ru.lostfly.p02102025.components.App;
+import ru.lostfly.components.App;
 
 public class Main {
 

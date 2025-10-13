@@ -1,7 +1,7 @@
-package ru.lostfly.p02102025.components.repository;
+package ru.lostfly.components.repository;
 
-import ru.lostfly.p02102025.repository.BookRepository;
-import ru.lostfly.p02102025.repository.impl.BookRepositoryImpl;
+import ru.lostfly.repository.BookRepository;
+import ru.lostfly.repository.impl.BookRepositoryImpl;
 
 public class RepositoryComponent {
     

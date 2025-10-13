@@ -1,8 +1,8 @@
-package ru.lostfly.p02102025.components.service;
+package ru.lostfly.components.service;
 
-import ru.lostfly.p02102025.components.repository.RepositoryComponent;
-import ru.lostfly.p02102025.service.LibraryService;
-import ru.lostfly.p02102025.service.impl.LibraryServiceImpl;
+import ru.lostfly.components.repository.RepositoryComponent;
+import ru.lostfly.service.LibraryService;
+import ru.lostfly.service.impl.LibraryServiceImpl;
 
 public class ServiceComponent {
     

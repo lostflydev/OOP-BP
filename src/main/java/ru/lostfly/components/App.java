@@ -1,11 +1,11 @@
-package ru.lostfly.p02102025.components;
+package ru.lostfly.components;
 
-import ru.lostfly.p02102025.components.repository.RepositoryComponent;
-import ru.lostfly.p02102025.components.service.ServiceComponent;
-import ru.lostfly.p02102025.domain.book.Book;
-import ru.lostfly.p02102025.domain.reader.Reader;
-import ru.lostfly.p02102025.repository.BookRepository;
-import ru.lostfly.p02102025.service.LibraryService;
+import ru.lostfly.components.repository.RepositoryComponent;
+import ru.lostfly.components.service.ServiceComponent;
+import ru.lostfly.domain.book.Book;
+import ru.lostfly.domain.reader.Reader;
+import ru.lostfly.repository.BookRepository;
+import ru.lostfly.service.LibraryService;
 
 import java.util.HashMap;
 import java.util.List;
