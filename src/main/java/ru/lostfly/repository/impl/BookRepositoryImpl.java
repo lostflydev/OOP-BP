@@ -1,10 +1,12 @@
-package ru.lostfly.p02102025.repository;
+package ru.lostfly.repository.impl;
 
-import ru.lostfly.p02102025.domain.book.Book;
+import ru.lostfly.domain.book.Book;
+import ru.lostfly.repository.BookRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookRepository {
+public class BookRepositoryImpl implements BookRepository {
     private final List<Book> books = new ArrayList<>();
 
     public void save(Book book) {

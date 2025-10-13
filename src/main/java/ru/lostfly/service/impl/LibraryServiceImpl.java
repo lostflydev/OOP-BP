@@ -1,13 +1,15 @@
-package ru.lostfly.p02102025.service;
+package ru.lostfly.service.impl;
 
-import ru.lostfly.p02102025.domain.book.Book;
-import ru.lostfly.p02102025.domain.reader.Reader;
-import ru.lostfly.p02102025.repository.BookRepository;
+import ru.lostfly.domain.book.Book;
+import ru.lostfly.domain.reader.Reader;
+import ru.lostfly.repository.BookRepository;
+import ru.lostfly.service.LibraryService;
 
-public class LibraryService {
+public class LibraryServiceImpl implements LibraryService {
     private final BookRepository bookRepository;
 
-    public LibraryService(BookRepository bookRepository) {
+
+    public LibraryServiceImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
