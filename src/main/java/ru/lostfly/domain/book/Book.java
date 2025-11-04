@@ -1,67 +1,49 @@
 package ru.lostfly.domain.book;
 
-public class Book implements Borrowable{
+public class Book extends LibItem implements Borrowable {
 
-    private final String isbn;      // ссылочный тип (String)
-    private final String title;     // ссылочный
-    private final String author;    // ссылочный
-    private boolean isAvailable;    // примитив! true/false
-    private int timesRead;          // примитив! целое число
+    // Дополнительные поля специфичные для Book
+    private String genre;  // Например, жанр книги
 
+    // Конструктор
     public Book(String isbn, String title, String author) {
-        this.isbn = isbn;
-        this.title = title;
-        this.author = author;
-        this.isAvailable = true;  // По умолчанию доступна (примитив)
-        this.timesRead = 0;       // Еще не читали (примитив)
+        super(isbn, title, author);  // Вызываем конструктор родителя
     }
 
+    // Конструктор с жанром
+    public Book(String isbn, String title, String author, String genre) {
+        super(isbn, title, author);
+        this.genre = genre;
+    }
+
+    // Реализация интерфейса Borrowable
     @Override
     public String borrow() {
-        if (isAvailable) {
-            isAvailable = false;
-            return "Книга успешно взята";
+        if (isAvailable()) {  // Используем метод родителя
+            setAvailable(false);  // Используем метод родителя
+            setTimesRead(getTimesRead() + 1);  // Увеличиваем счетчик прочтений
+            return "Книга '" + getTitle() + "' успешно взята";
         } else {
-            return "Книга недоступна";
+            return "Книга '" + getTitle() + "' недоступна";
         }
     }
 
-    public String getIsbn() {
-        return isbn;
+    // Реализация абстрактного метода из LibItem
+    @Override
+    public String getType() {
+        return "Book";
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public int getTimesRead() {
-        return timesRead;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
-
-    public void setTimesRead(int timesRead) {
-        this.timesRead = timesRead;
-    }
 
     @Override
     public String toString() {
         return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", isAvailable=" + isAvailable +
-                ", timesRead=" + timesRead +
+                "isbn='" + getIsbn() + '\'' +
+                ", title='" + getTitle() + '\'' +
+                ", author='" + getAuthor() + '\'' +
+                ", genre='" + genre + '\'' +
+                ", isAvailable=" + isAvailable() +
+                ", timesRead=" + getTimesRead() +
                 '}';
     }
 }

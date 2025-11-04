@@ -8,7 +8,6 @@ import ru.lostfly.service.LibraryService;
 public class LibraryServiceImpl implements LibraryService {
     private final BookRepository bookRepository;
 
-
     public LibraryServiceImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
