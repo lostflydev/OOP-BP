@@ -1,23 +1,62 @@
 package ru.lostfly.components.repository;
 
 import ru.lostfly.repository.BookRepository;
+import ru.lostfly.repository.ReaderRepository;
+import ru.lostfly.repository.impl.BookRepositoryDBImpl;
 import ru.lostfly.repository.impl.BookRepositoryImpl;
+import ru.lostfly.repository.impl.ReaderRepositoryDBImpl;
+import ru.lostfly.repository.impl.ReaderRepositoryImpl;
 
 public class RepositoryComponent {
-    
+
     private final BookRepository bookRepository;
-    
-    public RepositoryComponent() {
-        // Здесь решаем КАКУЮ реализацию использовать
-        // В будущем можно будет менять: new BookRepositoryDatabase()
-        this.bookRepository = new BookRepositoryImpl();
+    private final ReaderRepository readerRepository;
+
+    /**
+     * Режим работы репозитория
+     */
+    public enum RepositoryMode {
+        IN_MEMORY,  // В памяти (ArrayList)
+        DATABASE    // MySQL база данных
     }
-    
+
+    /**
+     * Конструктор по умолчанию - использует in-memory реализацию
+     */
+    public RepositoryComponent() {
+        this(RepositoryMode.IN_MEMORY);
+    }
+
+    /**
+     * Конструктор с выбором режима работы
+     */
+    public RepositoryComponent(RepositoryMode mode) {
+        switch (mode) {
+            case DATABASE:
+                this.bookRepository = new BookRepositoryDBImpl();
+                this.readerRepository = new ReaderRepositoryDBImpl();
+                break;
+            case IN_MEMORY:
+            default:
+                this.bookRepository = new BookRepositoryImpl();
+                this.readerRepository = new ReaderRepositoryImpl();
+                break;
+        }
+    }
+
     /**
      * Получить репозиторий книг.
      * Возвращаем интерфейс, а не конкретный класс!
      */
     public BookRepository getBookRepository() {
         return bookRepository;
+    }
+
+    /**
+     * Получить репозиторий читателей.
+     * Возвращаем интерфейс, а не конкретный класс!
+     */
+    public ReaderRepository getReaderRepository() {
+        return readerRepository;
     }
 }

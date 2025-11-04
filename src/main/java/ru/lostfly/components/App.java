@@ -6,29 +6,38 @@ import ru.lostfly.domain.book.Book;
 import ru.lostfly.domain.reader.Reader;
 import ru.lostfly.repository.BookRepository;
 import ru.lostfly.service.LibraryService;
+import ru.lostfly.utils.Utils;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class App {
 
     private final RepositoryComponent repositoryComponent;
     private final ServiceComponent serviceComponent;
-    private final Map<String, Reader> readers = new HashMap<>();
     private final Scanner scanner = new Scanner(System.in);
 
 
+    /**
+     * Конструктор по умолчанию - использует in-memory реализацию
+     */
     public App() {
-        this.repositoryComponent = new RepositoryComponent();
+        this(RepositoryComponent.RepositoryMode.IN_MEMORY);
+    }
+
+    /**
+     * Конструктор с выбором режима работы репозитория
+     * @param mode IN_MEMORY (в памяти) или DATABASE (MySQL)
+     */
+    public App(RepositoryComponent.RepositoryMode mode) {
+        System.out.println("Инициализация приложения в режиме: " + mode);
+        this.repositoryComponent = new RepositoryComponent(mode);
         this.serviceComponent = new ServiceComponent(repositoryComponent);
     }
 
 
     public void start() {
         printWelcome();
-
 
         while (true) {
             System.out.print("\nВведите команду: ");
@@ -37,7 +46,7 @@ public class App {
             switch (command) {
                 case "/add_book" -> addBook();
                 case "/add_user" -> addUser();
-                case "/borrow_book" -> borrowBook();
+                case "/borrow_book" -> getBorrowBookInfo();
                 case "/return_book" -> returnBook();
                 case "/find_book_by_author" -> findBookByAuthor();
                 case "/list_available_books" -> listAvailableBooks();
@@ -73,7 +82,7 @@ public class App {
         String name = scanner.nextLine();
 
         Reader reader = new Reader(id, name);
-        readers.put(id, reader);
+        repositoryComponent.getReaderRepository().save(reader);
         System.out.println("✓ Читатель '" + name + "' добавлен");
     }
 
@@ -91,6 +100,11 @@ public class App {
         // Guard Clause - проверяем читателя
         Reader reader = getReader(readerId);
 
+        if (reader == null) {
+            Utils.printUserNotFound();
+            return;
+        }
+
         borrowBook(reader, isbn);
     }
 
@@ -102,12 +116,19 @@ public class App {
     }
 
     private Reader getReader(String readerId) {
-        Reader reader = readers.get(readerId);
-        if (reader == null) {
-            System.out.println("✗ Читатель не найден");
-            return null;
+
+        try {
+            Reader reader = repositoryComponent.getReaderRepository().findById(readerId);
+            if (reader == null) {
+                Utils.printUserNotFound();
+                return null;
+            }
+            return reader;
+        } catch (Exception e) {
+            System.out.println("Ошибка: " + e.getMessage());
         }
-        return reader;
+
+        return null;
     }
 
     private void returnBook() {
