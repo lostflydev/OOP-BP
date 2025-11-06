@@ -12,4 +12,8 @@ public class Utils {
         logger.info("✗ Читатель не найден");
         logger.error("✗ Читатель не найден");
     }
+
+    public static void printUserFound() {
+        logger.warn("✗ Читатель найден");
+    }
 }
