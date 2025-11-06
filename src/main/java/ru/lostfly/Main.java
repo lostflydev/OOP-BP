@@ -25,5 +25,7 @@ public class Main {
         App app = new App(RepositoryComponent.RepositoryMode.DATABASE);
 
         app.start();
+
+        // ytyt
     }
 }
