@@ -1,7 +1,7 @@
-package ru.lostfly.repository.impl;
+package ru.lostfly.business.repository.impl;
 
-import ru.lostfly.domain.book.Book;
-import ru.lostfly.repository.BookRepository;
+import ru.lostfly.business.domain.book.Book;
+import ru.lostfly.business.repository.BookRepository;
 
 import java.util.ArrayList;
 import java.util.List;

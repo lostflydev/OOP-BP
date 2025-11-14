@@ -1,11 +1,11 @@
 package ru.lostfly.components.repository;
 
-import ru.lostfly.repository.BookRepository;
-import ru.lostfly.repository.ReaderRepository;
-import ru.lostfly.repository.impl.BookRepositoryDBImpl;
-import ru.lostfly.repository.impl.BookRepositoryImpl;
-import ru.lostfly.repository.impl.ReaderRepositoryDBImpl;
-import ru.lostfly.repository.impl.ReaderRepositoryImpl;
+import ru.lostfly.business.repository.BookRepository;
+import ru.lostfly.business.repository.ReaderRepository;
+import ru.lostfly.business.repository.impl.BookRepositoryDBImpl;
+import ru.lostfly.business.repository.impl.BookRepositoryImpl;
+import ru.lostfly.business.repository.impl.ReaderRepositoryDBImpl;
+import ru.lostfly.business.repository.impl.ReaderRepositoryImpl;
 
 public class RepositoryComponent {
 

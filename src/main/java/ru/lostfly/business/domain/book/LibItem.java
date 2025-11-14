@@ -1,4 +1,4 @@
-package ru.lostfly.domain.book;
+package ru.lostfly.business.domain.book;
 
 import java.util.UUID;
 

@@ -1,7 +1,7 @@
-package ru.lostfly.repository.impl;
+package ru.lostfly.business.repository.impl;
 
-import ru.lostfly.domain.reader.Reader;
-import ru.lostfly.repository.ReaderRepository;
+import ru.lostfly.business.domain.reader.Reader;
+import ru.lostfly.business.repository.ReaderRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
