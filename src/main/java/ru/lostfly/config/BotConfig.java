@@ -1,4 +1,4 @@
-package ru.lostfly.components.tgbotapi;
+package ru.lostfly.config;
 
 import io.github.cdimascio.dotenv.Dotenv;
 

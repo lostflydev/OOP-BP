@@ -1,7 +1,7 @@
-package ru.lostfly.service;
+package ru.lostfly.business.service;
 
-import ru.lostfly.domain.book.Book;
-import ru.lostfly.domain.reader.Reader;
+import ru.lostfly.business.domain.book.Book;
+import ru.lostfly.business.domain.reader.Reader;
 
 public interface LibraryService {
     
