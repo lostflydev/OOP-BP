@@ -1,15 +1,14 @@
 package ru.lostfly;
 
-import ru.lostfly.components.App;
-import ru.lostfly.components.repository.RepositoryComponent;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+import ru.lostfly.components.tgbotapi.LibraryBot;
 
-import java.time.Duration;
-import java.time.OffsetDateTime;
 
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("APP STARTING>>>");
+    public static void main(String[] args) throws TelegramApiException {
 
         // Выбор режима работы:
         // 1. IN_MEMORY - данные хранятся в памяти (ArrayList)
@@ -22,10 +21,13 @@ public class Main {
         // App app = new App(RepositoryComponent.RepositoryMode.DATABASE);
 
         // По умолчанию используется in-memory режим
-        App app = new App(RepositoryComponent.RepositoryMode.DATABASE);
+        // App app = new App(RepositoryComponent.RepositoryMode.IN_MEMORY);
 
-        app.start();
+        // app.start();
 
-        // ytyt
+        LibraryBot bot = new LibraryBot();
+
+        TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
+        botsApi.registerBot(bot);
     }
 }
