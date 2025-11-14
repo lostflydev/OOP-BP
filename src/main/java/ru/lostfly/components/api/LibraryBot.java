@@ -1,11 +1,12 @@
-package ru.lostfly.components.tgbotapi;
+package ru.lostfly.components.api;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.lostfly.components.handlers.TgApiHandler;
+import ru.lostfly.business.handlers.TgApiHandler;
 import ru.lostfly.components.repository.RepositoryComponent;
+import ru.lostfly.config.BotConfig;
 
 public class LibraryBot extends TelegramLongPollingBot {
 

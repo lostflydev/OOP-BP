@@ -3,7 +3,7 @@ package ru.lostfly;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import ru.lostfly.components.tgbotapi.LibraryBot;
+import ru.lostfly.components.api.LibraryBot;
 
 
 public class Main {

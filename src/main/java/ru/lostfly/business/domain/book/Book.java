@@ -1,4 +1,4 @@
-package ru.lostfly.domain.book;
+package ru.lostfly.business.domain.book;
 
 public class Book extends LibItem implements Borrowable {
 

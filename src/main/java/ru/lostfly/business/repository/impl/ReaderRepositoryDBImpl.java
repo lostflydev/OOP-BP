@@ -1,10 +1,10 @@
-package ru.lostfly.repository.impl;
+package ru.lostfly.business.repository.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import ru.lostfly.config.DatabaseConnection;
-import ru.lostfly.domain.book.Book;
-import ru.lostfly.domain.reader.Reader;
-import ru.lostfly.repository.ReaderRepository;
+import ru.lostfly.business.domain.book.Book;
+import ru.lostfly.business.domain.reader.Reader;
+import ru.lostfly.business.repository.ReaderRepository;
 
 import java.sql.*;
 import java.util.ArrayList;

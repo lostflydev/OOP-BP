@@ -1,6 +1,6 @@
-package ru.lostfly.domain.reader;
+package ru.lostfly.business.domain.reader;
 
-import ru.lostfly.domain.book.Book;
+import ru.lostfly.business.domain.book.Book;
 
 import java.util.ArrayList;
 import java.util.List;

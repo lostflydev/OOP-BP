@@ -1,11 +1,11 @@
-package ru.lostfly.components.handlers;
+package ru.lostfly.business.handlers;
 
 import ru.lostfly.components.repository.RepositoryComponent;
 import ru.lostfly.components.service.ServiceComponent;
-import ru.lostfly.domain.book.Book;
-import ru.lostfly.domain.reader.Reader;
-import ru.lostfly.repository.BookRepository;
-import ru.lostfly.service.LibraryService;
+import ru.lostfly.business.domain.book.Book;
+import ru.lostfly.business.domain.reader.Reader;
+import ru.lostfly.business.repository.BookRepository;
+import ru.lostfly.business.service.LibraryService;
 
 import java.util.HashMap;
 import java.util.List;
