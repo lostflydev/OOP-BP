@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>📚 Библиотека</h1>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="books">Книги</button>
+            <button class="tab" data-tab="readers">Читатели</button>
+            <button class="tab" data-tab="operations">Операции</button>
+        </nav>
+
+        <!-- Вкладка: Книги -->
+        <div id="books-tab" class="tab-content active">
+            <div class="section">
+                <h2>Доступные книги</h2>
+                <div id="available-books" class="book-list">
+                    <div class="loading">Загрузка...</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Добавить книгу</h2>
+                <form id="add-book-form" class="form">
+                    <input type="text" id="book-isbn" placeholder="ISBN" required>
+                    <input type="text" id="book-title" placeholder="Название книги" required>
+                    <input type="text" id="book-author" placeholder="Автор" required>
+                    <button type="submit" class="btn btn-primary">Добавить</button>
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>Поиск по автору</h2>
+                <form id="search-form" class="form">
+                    <input type="text" id="search-author" placeholder="Имя автора" required>
+                    <button type="submit" class="btn btn-secondary">Найти</button>
+                </form>
+                <div id="search-results" class="book-list"></div>
+            </div>
+        </div>
+
+        <!-- Вкладка: Читатели -->
+        <div id="readers-tab" class="tab-content">
+            <div class="section">
+                <h2>Список читателей</h2>
+                <div id="readers-list" class="readers-list">
+                    <div class="loading">Загрузка...</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Добавить читателя</h2>
+                <form id="add-reader-form" class="form">
+                    <input type="text" id="reader-id" placeholder="ID читателя (например, R001)" required>
+                    <input type="text" id="reader-name" placeholder="Имя читателя" required>
+                    <button type="submit" class="btn btn-primary">Добавить</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Вкладка: Операции -->
+        <div id="operations-tab" class="tab-content">
+            <div class="section">
+                <h2>Выдать книгу</h2>
+                <form id="borrow-form" class="form">
+                    <input type="text" id="borrow-isbn" placeholder="ISBN книги" required>
+                    <input type="text" id="borrow-reader-id" placeholder="ID читателя" required>
+                    <button type="submit" class="btn btn-success">Выдать</button>
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>Вернуть книгу</h2>
+                <form id="return-form" class="form">
+                    <input type="text" id="return-isbn" placeholder="ISBN книги" required>
+                    <input type="text" id="return-reader-id" placeholder="ID читателя" required>
+                    <button type="submit" class="btn btn-warning">Вернуть</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Уведомления -->
+        <div id="notification" class="notification hidden"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
