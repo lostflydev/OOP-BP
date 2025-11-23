@@ -27,6 +27,17 @@ public class TgApiHandler {
     }
 
     /**
+     * Конструктор с существующим RepositoryComponent
+     */
+    public TgApiHandler(RepositoryComponent repositoryComponent) {
+        System.out.println("Инициализация TgApiHandler с существующим RepositoryComponent");
+        this.repositoryComponent = repositoryComponent;
+        this.serviceComponent = new ServiceComponent(repositoryComponent);
+        this.userSessions = new HashMap<>();
+        System.out.println("TgApiHandler инициализирован");
+    }
+
+    /**
      * Конструктор с выбором режима работы репозитория
      * @param mode IN_MEMORY (в памяти) или DATABASE (MySQL)
      */
@@ -35,6 +46,7 @@ public class TgApiHandler {
         this.repositoryComponent = new RepositoryComponent(mode);
         this.serviceComponent = new ServiceComponent(repositoryComponent);
         this.userSessions = new HashMap<>();
+        System.out.println("APP STARTED " + mode);
     }
 
 
@@ -458,7 +470,7 @@ public class TgApiHandler {
      */
     private String getWelcomeMessage() {
         return "╔════════════════════════════════════════╗\n" +
-               "║   Система управления библиотекой      ║\n" +
+               "║   Система управления библиотекой       ║\n" +
                "╚════════════════════════════════════════╝\n\n" +
                "Добро пожаловать! Введите /help для списка команд.";
     }
@@ -472,6 +484,7 @@ public class TgApiHandler {
 
                 /start - Приветствие
                 /help - Эта справка
+                /webapp или /app - Открыть Mini App (веб-интерфейс)
                 /cancel - Отменить текущий диалог
 
                 Управление книгами:
@@ -500,6 +513,8 @@ public class TgApiHandler {
 
                 💡 Подсказка: Вы можете использовать команды с параметрами
                 (быстрый режим) или без них (пошаговый диалог).
+
+                🎯 Для удобного управления используйте Mini App - /webapp
                 """;
     }
 
