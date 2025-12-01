@@ -1,9 +1,9 @@
-package ru.lostfly.service.impl;
+package ru.lostfly.business.service.impl;
 
-import ru.lostfly.domain.book.Book;
-import ru.lostfly.domain.reader.Reader;
-import ru.lostfly.repository.BookRepository;
-import ru.lostfly.service.LibraryService;
+import ru.lostfly.business.domain.book.Book;
+import ru.lostfly.business.domain.reader.Reader;
+import ru.lostfly.business.repository.BookRepository;
+import ru.lostfly.business.service.LibraryService;
 
 public class LibraryServiceImpl implements LibraryService {
     private final BookRepository bookRepository;
